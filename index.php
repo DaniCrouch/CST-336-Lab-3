@@ -1,4 +1,6 @@
 <?
+ $PlayerNames = array("Matthew", "Ester", "Jude", "Ruth");
+
 function getHand()
 {
 }
