@@ -7,6 +7,9 @@ $shuffle[$deck];
 print_r($deck);
 $card = array_pop($deck);
 
+$PlayerNames = array("Matthew", "Ester", "Jude", "Ruth");
+$card_types = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J','Q','K');
+
 function displayCardImage(){
     global $deck;
     $suitArray = array("clubs", "diamonds", "hearts", "spades");
