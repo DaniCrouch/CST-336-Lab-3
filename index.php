@@ -1,28 +1,66 @@
 <?
 $deck = array();
-for ($i=1; $i<53; $i++){
-    $deck[] =$i;
-}
-$shuffle[$deck];
-print_r($deck);
-$card = array_pop($deck);
-
-$PlayerNames = array("Matthew", "Ester", "Jude", "Ruth");
+$playerNames = array("Matthew", "Ester", "Jude", "Ruth");
+$playerScores = array(0,0,0,0);
+$deckValues = array();
+$suitArray = array("clubs", "diamonds", "hearts", "spades");
+$deckSuits = array();
 $card_types = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J','Q','K');
 
-function displayCardImage(){
-    global $deck;
-    $suitArray = array("clubs", "diamonds", "hearts", "spades");
-    $randomIndex = rand(0,3);
-    $randomSuit = $suitArray[$randomIndex];
-    echo "<img src='img/cards/$randomSuit/".rand(1,13).".png'/>";
+// initialize deck
+for ($i=1; $i<53; $i++){
+    //true means this card is in the deck
+    //we will set these to false when we grab a random card
+    $deck[] = true;
+}
 
+// initalize deckValues and deckSuits
+for ($i=0;i<4;i++)
+{
+    for ($j=1; $j<13; $j++){
+        deckValues[] = $j;
+        deckSuits[] = suitArray[$i];
+    }
+}
+
+print_r($deck);
+
+//make these global
+global $deck;
+global $deckValues;
+global $deckSuits;
+global $playerScores;
+
+//get the index of a random card that is still in the deck
+function popRandCard(){
+    $r=rand(0,51);
+    while(!$deck[$r]){$r=rand(0,51);}
+    $deck[$r]=false;
+    return $r;
+}
+//displays a card image based on its index in the deck
+function displayCardImage($i){
+    echo "<img class='card' src='img/cards/$deckSuites[$i]/$deckValues[$i].png'/>";
+}
+
+//gets a set of cards drawn by the player
 function getHand()
 {
+    $hand = array();
+    $sum = 0;
+    while (sum < 37)
+    {
+        $c = popRandCard();
+        $sum += $deckValues;
+        $hand[] = $c;
+    }
+    return $hand;
 }
+
 function displayHand()
 {
 }
+
 function displayWinners()
 {
 }
