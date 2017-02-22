@@ -16,8 +16,6 @@ function displayCardImage(){
     $randomIndex = rand(0,3);
     $randomSuit = $suitArray[$randomIndex];
     echo "<img src='img/cards/$randomSuit/".rand(1,13).".png'/>";
- 
-$PlayerNames = array("Matthew", "Ester", "Jude", "Ruth");
 
 function getHand()
 {
