@@ -1,6 +1,13 @@
 <?
-
-
+function getHand()
+{
+}
+function displayHand()
+{
+}
+function displayWinners()
+{
+}
 ?>
 
 <!DOCTYPE html>
