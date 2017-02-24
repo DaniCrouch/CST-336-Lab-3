@@ -57,9 +57,13 @@ function getHand()
     return $hand;
 }
 
-function displayHand()
+// displays a set of cards in a row
+function displayHand($hand)
 {
-    
+    for($hand as $c)
+    {
+        displayCardImage($c);
+    }
 }
 
 // function displayWinners()
