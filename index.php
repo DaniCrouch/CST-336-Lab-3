@@ -29,11 +29,10 @@ for ($i = 0; $i < 4; $i++)
 function popRandCard()
 {
     global $deck;
-    //TODO: This method does not work
     $r = rand(0, 51);
     while(!$deck[$r])
     {
-        $r=rand(0,51);
+        $r = rand(0,51);
     }
     $deck[$r] = false;
     return $r;
@@ -53,11 +52,13 @@ function displayCardImage($i){
 // Gets a set of cards drawn by the player
 function getHand()
 {
+    global $deckValues;
     $hand = array();
     $sum = 0;
-    while (sum < 37)
+    while ($sum < 37)
     {
         $c = popRandCard();
+        $sum += $deckValues[$c];
         $hand[] = $c;
     }
     return $hand;
@@ -181,7 +182,8 @@ function displayScore($score)
         for($i = 0; $i < 4; $i++)
         {
             //start by getting a hand
-            $hand = array(1, 2, 3, 4);//getHand();
+            $hand = array(1, 2, 3, 4);
+            $hand = getHand();
             
             // add the values of the cards in the hand to create a score
             $score = 0;
