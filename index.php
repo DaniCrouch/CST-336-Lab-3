@@ -59,6 +59,7 @@ function getHand()
 
 function displayHand()
 {
+    
 }
 
 function displayWinners()
@@ -107,7 +108,30 @@ function displayWinners()
             echo "Jude wins";
         }
         break;
-    
+}
+function getWinners()
+{
+    $highScore = max($playerScores);
+    $winnerCount = 0;
+    $winners = [];
+    for($i = 0; $i < 4; i++)
+    {
+        if($playerScores == $highScore)
+        {
+            $winners[] = $playerNames[$i];
+            $winnerCount++;
+        }
+    }
+    $result = '';
+    if($winnerCount == 1) $result = $winners[0] + ' is the winner.';
+    else {
+        for($i = 0; $i < $winnerCount; $i++)
+        {
+            if($i == winnerCount - 1) $result = $result + 'and ' +$winners[$i] + 'are tied for winner.';
+            else $result = $result + $winners[$i] + ', ';
+        }
+    }
+    return $result;
 }
 ?>
 
