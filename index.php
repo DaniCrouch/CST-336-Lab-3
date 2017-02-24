@@ -1,6 +1,6 @@
 <?
 $deck = array();
-$playerNames = array("Matthew", "Ester", "Jude", "Ruth");
+$playerNames = array("Matthew", "Ruth", "Ester", "Jude");
 $playerScores = array(0,0,0,0);
 $deckValues = array();
 $suitArray = array("clubs", "diamonds", "hearts", "spades");
