@@ -19,7 +19,7 @@ for ($i = 0; $i < 52; $i++){
 // Initalize deckValues and deckSuits
 for ($i = 0; $i < 4; $i++)
 {
-    for ($j=1; $j<13; $j++){
+    for ($j=1; $j<14; $j++){
         $deckValues[] = $j;
         $deckSuits[] = $suitArray[$i];
     }
@@ -202,6 +202,7 @@ function displayScore($score)
             displayHand($hand);
             // followed by their score
             displayScore($score);
+            echo '<hr>';
         }
         displayWinners();
         ?>
