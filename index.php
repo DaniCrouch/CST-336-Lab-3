@@ -160,6 +160,7 @@ function displayScore($score)
             
             // If this score "busts" or is greater than 42, we give the player
             // a negative score.
+            $points = $score;
             if($score > 42)
             {
                 $score = 42 - $score;
@@ -173,7 +174,7 @@ function displayScore($score)
             // followed by their hand
             displayHand($hand);
             // followed by their score
-            displayScore($score);
+            displayScore($points);
             echo '<hr>';
         }
         displayWinners();
