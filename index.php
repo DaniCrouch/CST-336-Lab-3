@@ -63,8 +63,6 @@ function displayHand()
 
 function displayWinners()
 {
-    function displayWinners()
-{
     $winner = max(array($Matthew, $Ester, $Jude, $Ruth));
     switch($winner)
     case "$Matthew":
@@ -110,7 +108,6 @@ function displayWinners()
         }
         break;
     
-}
 }
 ?>
 
