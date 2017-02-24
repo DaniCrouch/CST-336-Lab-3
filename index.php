@@ -182,7 +182,6 @@ function displayScore($score)
         for($i = 0; $i < 4; $i++)
         {
             //start by getting a hand
-            $hand = array(1, 2, 3, 4);
             $hand = getHand();
             
             // add the values of the cards in the hand to create a score
