@@ -128,7 +128,7 @@ function displayWinners()
     else {
         for($i = 0; $i < $winnerCount; $i++)
         {
-            if($i == $winnerCount - 1) echo 'and ' +$winners[$i] + 'are tied for winner';
+            if($i == $winnerCount - 1) echo 'and ' +$winners[$i] + ' are tied for winner';
             else echo $winners[$i] + ', ';
         }
     }
