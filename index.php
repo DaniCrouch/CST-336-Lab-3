@@ -1,28 +1,31 @@
 <?php
 $deck = array();
+$deckValues = array();
+$deckSuits = array();
+$suitArray = array("clubs", "diamonds", "hearts", "spades");
+$cardTypes = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J','Q','K');
 $playerNames = array("Matthew", "Ruth", "Ester", "Jude");
 $playerScores = array(0,0,0,0);
-$deckValues = array();
-$suitArray = array("clubs", "diamonds", "hearts", "spades");
-$deckSuits = array();
-$card_types = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J','Q','K');
 
-//make these global
+// Make these global
 global $deck;
-global $deckValues;
-global $deckSuits;
+global $playerNames;
 global $playerScores;
+global $deckValues;
+global $suitArray;
+global $deckSuits;
+global $cardTypes;
 
-// initialize deck
-for ($i = 1; $i < 53; $i++){
+// Initialize deck
+for ($i = 0; $i < 52; $i++){
     //true means this card is in the deck
     //we will set these to false when we grab a random card
     $deck[] = true;
 }
 //print_r($deck);
 
-// initalize deckValues and deckSuits
-for ($i = 0;$i < 4;$i++)
+// Initalize deckValues and deckSuits
+for ($i = 0; $i < 4; $i++)
 {
     for ($j=1; $j<13; $j++){
         $deckValues[] = $j;
@@ -30,19 +33,25 @@ for ($i = 0;$i < 4;$i++)
     }
 }
 
-//get the index of a random card that is still in the deck
-function popRandCard(){
-    $r=rand(0,51);
-    while(!$deck[$r]){$r=rand(0,51);}
-    $deck[$r]=false;
+// Get the index of a random card that is still in the deck
+function popRandCard()
+{
+    //TODO: This method does not work
+    $r = rand(0, 51);
+    while(!$deck[$r])
+    {
+        $r=rand(0,51);
+    }
+    $deck[$r] = false;
     return $r;
 }
-//displays a card image based on its index in the deck
+
+// Displays a card image based on its index in the deck
 function displayCardImage($i){
     echo "<img class='card' src='img/cards/$deckSuites[$i]/$deckValues[$i].png'/>";
 }
 
-//gets a set of cards drawn by the player
+// Gets a set of cards drawn by the player
 function getHand()
 {
     $hand = array();
@@ -50,7 +59,7 @@ function getHand()
     while (sum < 37)
     {
         $c = popRandCard();
-        $sum += $deckValues;
+        $sum += $deckValues[$c];
         $hand[] = $c;
     }
     return $hand;
@@ -163,5 +172,32 @@ function displayScore($score)
         <title> Silverjack Game </title>
     </head>
     <body>
+        <?php
+        // Now, for the four players, assign them each a hand and display it
+        for($i = 0; $i < 4; $i++)
+        {
+            //start by getting a hand
+            $hand = getHand();
+            
+            // add the values of the cards in the hand to create a score
+            $score = 0;
+            foreach($hand as $c) $score += $deckValues[$c];
+            $playerScores[$i] = $score;
+            
+            // If this score "busts" or is greater than 42, we give the player
+            // a negative score.
+            if($score > 42)
+            {
+                $score = 42 - $score;
+            }
+            
+            // display the player info for this player
+            displayPlayerInfo($i);
+            // followed by their hand
+            displayHand($hand);
+            // followed by their score
+            displayScore($score);
+        }
+        ?>
     </body>
 </html>
