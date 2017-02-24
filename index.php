@@ -4,18 +4,17 @@ $deckValues = array();
 $deckSuits = array();
 $suitArray = array("clubs", "diamonds", "hearts", "spades");
 $cardTypes = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J','Q','K');
-$playerNames = array("Matthew", "Ruth", "Ester", "Jude");
+$playerNames = array("Matthew", "Ruth", "Ester", "Jude", "Bobby", "Billy", "Jimmy", "Jeff", "Danielle", "Carsen");
 $players = array();
 
 // Randomize the player order
 for($i = 0; $i < 3; $i++)
 {
-    $r = rand(0, 3 - $i);
+    $r = rand(0, 9 - $i);
     $players[] = $playerNames[$r];
     array_splice($playerNames, $r, 1);
 }
 $players[] = $playerNames[0];
-
 
 $playerScores = array(0,0,0,0);
 // Initialize deck
