@@ -63,6 +63,54 @@ function displayHand()
 
 function displayWinners()
 {
+    function displayWinners()
+{
+    $winner = max(array($Matthew, $Ester, $Jude, $Ruth));
+    switch($winner)
+    case "$Matthew":
+        if ($Matthew==$Ester&&$Matthew==$Ruth&&$Matthew==$Jude)
+        {echo "It is a four way tie";}
+        else if ($Matthew==$Ester&&$Matthew==$Ruth&&$Matthew!=$Jude)
+        {echo "It is a three way tie between Matthew, Ester, and Ruth";}
+         else if ($Matthew==$Ester&&$Matthew!=$Ruth&&$Matthew==$Jude)
+        {echo "It is a three way tie between Matthew, Ester, and Jude";}
+         else if ($Matthew!=$Ester&&$Matthew==$Ruth&&$Matthew==$Jude)
+        {echo "It is a three way tie between Matthew, Jude, and Ruth";}
+         else if ($Matthew==$Ester&&$Matthew!=$Ruth&&$Matthew!=$Jude)
+        {echo "It is a tie between Matthew and Ester";}
+         else if ($Matthew!=$Ester&&$Matthew==$Ruth&&$Matthew!=$Jude)
+        {echo "It is a tie between Matthew and Ruth";}
+         else if ($Matthew!=$Ester&&$Matthew!=$Ruth&&$Matthew==$Jude)
+        {echo "It is a tie between Matthew and Jude";}
+        else{
+            echo "Matthew wins";
+        }
+        break;
+    case "$Ruth":
+         else if ($Ruth==$Ester&&$Ruth!=$Matthew&&$Ruth==$Jude)
+        {echo "It is a three way tie between Ruth, Ester, and Jude";}
+         else if ($Ruth==$Ester&&$Ruth!=$Matthew&&$Ruth!=$Jude)
+        {echo "It is a tie between Ruth and Ester";}
+         else if ($Ruth!=$Ester&&$Ruth!=$Matthew&&$Ruth==$Jude)
+        {echo "It is a tie between Ruth and Jude";}
+        else{
+            echo "Ruth wins";
+        }
+        break;
+    case "$Ester":
+         else if ($Ruth!=$Ester&&$Ester!=$Matthew&&$Ester==$Jude)
+        {echo "It is a tie between Ester and Jude";}
+        else{
+            echo "Ester wins";
+        }
+        break;
+    case "$Jude":
+        else{
+            echo "Jude wins";
+        }
+        break;
+    
+}
 }
 ?>
 
