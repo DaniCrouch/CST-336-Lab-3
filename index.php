@@ -1,4 +1,4 @@
-<?
+<?php
 $deck = array();
 $playerNames = array("Matthew", "Ruth", "Ester", "Jude");
 $playerScores = array(0,0,0,0);
@@ -14,19 +14,19 @@ global $deckSuits;
 global $playerScores;
 
 // initialize deck
-for ($i=1; $i<53; $i++){
+for ($i = 1; $i < 53; $i++){
     //true means this card is in the deck
     //we will set these to false when we grab a random card
     $deck[] = true;
 }
-print_r($deck);
+//print_r($deck);
 
 // initalize deckValues and deckSuits
-for ($i=0;i<4;i++)
+for ($i = 0;$i < 4;$i++)
 {
     for ($j=1; $j<13; $j++){
-        deckValues[] = $j;
-        deckSuits[] = suitArray[$i];
+        $deckValues[] = $j;
+        $deckSuits[] = $suitArray[$i];
     }
 }
 
@@ -59,7 +59,7 @@ function getHand()
 // Displays a set of cards in a row
 function displayHand($hand)
 {
-    for($hand as $c)
+    foreach($hand as $c)
     {
         displayCardImage($c);
     }
@@ -71,7 +71,7 @@ function displayWinners()
     $highScore = max($playerScores);
     $winnerCount = 0;
     $winners = [];
-    for($i = 0; $i < 4; i++)
+    for($i = 0; $i < 4; $i++)
     {
         if($playerScores == $highScore)
         {
@@ -89,8 +89,26 @@ function displayWinners()
     }
 }
 
+// This method should display the profile picture and info for a the player: $playerNames[$i]
+function displayPlayerInfo($i)
+{
+    //TODO: finish this method
+    echo $playerNames[$i];
+}
+
+// This method should display a score based on $score
+function displayScore($score)
+{
+    //TODO: finish this method
+    echo $score;
+}
+
 // function displayWinners()
 // {
+// This method for displaying winners is not abstract enough.
+// There is no need to define players as variables in the code
+// There is also no reason that each case needs to be explicitly written out,
+// see the code above if you don't know what I mean.
 //     $winner = max(array($Matthew, $Ester, $Jude, $Ruth));
 //     switch($winner)
 //     case "$Matthew":
@@ -145,8 +163,5 @@ function displayWinners()
         <title> Silverjack Game </title>
     </head>
     <body>
-      
-      
-      
     </body>
 </html>
