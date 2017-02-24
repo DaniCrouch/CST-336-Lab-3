@@ -4,17 +4,9 @@ $deckValues = array();
 $deckSuits = array();
 $suitArray = array("clubs", "diamonds", "hearts", "spades");
 $cardTypes = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J','Q','K');
+
 $playerNames = array("Matthew", "Ruth", "Ester", "Jude");
 $playerScores = array(0,0,0,0);
-
-// Make these global
-global $deck;
-global $playerNames;
-global $playerScores;
-global $deckValues;
-global $suitArray;
-global $deckSuits;
-global $cardTypes;
 
 // Initialize deck
 for ($i = 0; $i < 52; $i++){
@@ -36,6 +28,7 @@ for ($i = 0; $i < 4; $i++)
 // Get the index of a random card that is still in the deck
 function popRandCard()
 {
+    global $deck;
     //TODO: This method does not work
     $r = rand(0, 51);
     while(!$deck[$r])
@@ -48,7 +41,13 @@ function popRandCard()
 
 // Displays a card image based on its index in the deck
 function displayCardImage($i){
-    echo "<img class='card' src='img/cards/$deckSuites[$i]/$deckValues[$i].png'/>";
+    global $deckSuits;
+    global $deckValues;
+    echo '<img class="card" src="img/cards/';
+    echo $deckSuits[$i];
+    echo '/';
+    echo $deckValues[$i];
+    echo '.png"/>';
 }
 
 // Gets a set of cards drawn by the player
@@ -59,7 +58,6 @@ function getHand()
     while (sum < 37)
     {
         $c = popRandCard();
-        $sum += $deckValues[$c];
         $hand[] = $c;
     }
     return $hand;
@@ -77,6 +75,9 @@ function displayHand($hand)
 // Displays the winner of the game, if there is a tie, display all the winners
 function displayWinners()
 {
+    global $playerScores;
+    global $playerNames;
+    
     $highScore = max($playerScores);
     $winnerCount = 0;
     $winners = [];
@@ -101,6 +102,7 @@ function displayWinners()
 // This method should display the profile picture and info for a the player: $playerNames[$i]
 function displayPlayerInfo($i)
 {
+    global $playerNames;
     //TODO: finish this method
     echo $playerNames[$i];
 }
@@ -174,10 +176,12 @@ function displayScore($score)
     <body>
         <?php
         // Now, for the four players, assign them each a hand and display it
+        global $playerScores;
+        global $deckValues;
         for($i = 0; $i < 4; $i++)
         {
             //start by getting a hand
-            $hand = getHand();
+            $hand = array(1, 2, 3, 4);//getHand();
             
             // add the values of the cards in the hand to create a score
             $score = 0;
@@ -198,6 +202,7 @@ function displayScore($score)
             // followed by their score
             displayScore($score);
         }
+        displayWinners();
         ?>
     </body>
 </html>
