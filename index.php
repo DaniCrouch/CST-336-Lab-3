@@ -166,13 +166,6 @@ function displayScore($score)
                 $score = 42 - $score;
             }
             
-            // THIS WILL NOT WORK, IT WILL JUST CHOOSE A RANDOM PLAYER
-            // IT WILL NOT DISPLAY ALL PLAYERS
-            // IT WILL OFTEN REPEAT PLAYERS
-            // INSTEAD WE WILL RANDOMIZE PLAYER NAMES ABOVE
-            //randomizes the characters order
-            // $d = RanPlayer();
-            
             // Save the score
             $playerScores[$i] = $score;
             
