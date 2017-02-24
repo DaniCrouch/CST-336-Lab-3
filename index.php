@@ -4,10 +4,9 @@ $deckValues = array();
 $deckSuits = array();
 $suitArray = array("clubs", "diamonds", "hearts", "spades");
 $cardTypes = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J','Q','K');
-
 $playerNames = array("Matthew", "Ruth", "Ester", "Jude");
-$playerScores = array(0,0,0,0);
 
+$playerScores = array(0,0,0,0);
 // Initialize deck
 for ($i = 0; $i < 52; $i++){
     //true means this card is in the deck
@@ -15,7 +14,6 @@ for ($i = 0; $i < 52; $i++){
     $deck[] = true;
 }
 //print_r($deck);
-
 // Initalize deckValues and deckSuits
 for ($i = 0; $i < 4; $i++)
 {
@@ -25,6 +23,13 @@ for ($i = 0; $i < 4; $i++)
     }
 }
 
+//randomizes player order
+function RanPlayer()
+{
+    $myRange = range(0,3);
+shuffle($myRange);
+return $myRange[0];
+}
 // Get the index of a random card that is still in the deck
 function popRandCard()
 {
@@ -37,18 +42,16 @@ function popRandCard()
     $deck[$r] = false;
     return $r;
 }
-
 // Displays a card image based on its index in the deck
 function displayCardImage($i){
     global $deckSuits;
     global $deckValues;
-    echo '<img class="card" src="img/cards/';
+    echo '<img class="card" src="IMG/cards/';
     echo $deckSuits[$i];
     echo '/';
     echo $deckValues[$i];
     echo '.png"/>';
 }
-
 // Gets a set of cards drawn by the player
 function getHand()
 {
@@ -63,7 +66,6 @@ function getHand()
     }
     return $hand;
 }
-
 // Displays a set of cards in a row
 function displayHand($hand)
 {
@@ -72,7 +74,6 @@ function displayHand($hand)
         displayCardImage($c);
     }
 }
-
 // Displays the winner of the game, if there is a tie, display all the winners
 function displayWinners()
 {
@@ -112,22 +113,24 @@ function displayWinners()
         }
     }
 }
-
 // This method should display the profile picture and info for a the player: $playerNames[$i]
-function displayPlayerInfo($i)
+function displayPlayerInfo($d)
 {
     global $playerNames;
+    //ADDED PLAYER PICS
+    echo '<img src = "/Labs/Lab3/IMG/';
+    echo $playerNames[$d];
+    echo '.png">';
     //TODO: finish this method
-    echo $playerNames[$i];
+    echo $playerNames[$d];
+    
 }
-
 // This method should display a score based on $score
 function displayScore($score)
 {
     //TODO: finish this method
     echo $score;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -155,12 +158,13 @@ function displayScore($score)
             {
                 $score = 42 - $score;
             }
-            
+            //randomizes the characters order
+          $d = RanPlayer();
             // Save the score
-            $playerScores[$i] = $score;
+            $playerScores[$d] = $score;
             
             // display the player info for this player
-            displayPlayerInfo($i);
+            displayPlayerInfo($d);
             // followed by their hand
             displayHand($hand);
             // followed by their score
