@@ -5,6 +5,17 @@ $deckSuits = array();
 $suitArray = array("clubs", "diamonds", "hearts", "spades");
 $cardTypes = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J','Q','K');
 $playerNames = array("Matthew", "Ruth", "Ester", "Jude");
+$players = array();
+
+// Randomize the player order
+for($i = 0; $i < 3; $i++)
+{
+    $r = rand(0, 3 - $i);
+    $players[] = $playerNames[$r];
+    array_splice($playerNames, $r, 1);
+}
+$players[] = $playerNames[0];
+
 
 $playerScores = array(0,0,0,0);
 // Initialize deck
@@ -13,6 +24,7 @@ for ($i = 0; $i < 52; $i++){
     //we will set these to false when we grab a random card
     $deck[] = true;
 }
+
 //print_r($deck);
 // Initalize deckValues and deckSuits
 for ($i = 0; $i < 4; $i++)
@@ -23,13 +35,6 @@ for ($i = 0; $i < 4; $i++)
     }
 }
 
-//randomizes player order
-function RanPlayer()
-{
-    $myRange = range(0,3);
-shuffle($myRange);
-return $myRange[0];
-}
 // Get the index of a random card that is still in the deck
 function popRandCard()
 {
@@ -78,16 +83,18 @@ function displayHand($hand)
 function displayWinners()
 {
     global $playerScores;
-    global $playerNames;
+    global $players;
     
     $highScore = max($playerScores);
+    //echo 'high score: ';
+    //echo $highScore;
     $winnerCount = 0;
     $winners = [];
     for($i = 0; $i < 4; $i++)
     {
         if($playerScores[$i] == $highScore)
         {
-            $winners[] = $playerNames[$i];
+            $winners[] = $players[$i];
             $winnerCount++;
         }
     }
@@ -113,16 +120,16 @@ function displayWinners()
         }
     }
 }
-// This method should display the profile picture and info for a the player: $playerNames[$i]
+// This method should display the profile picture and info for a the player: $players[$i]
 function displayPlayerInfo($d)
 {
-    global $playerNames;
+    global $players;
     //ADDED PLAYER PICS
-    echo '<img src = "/Labs/Lab3/IMG/';
-    echo $playerNames[$d];
+    echo '<img src = "img/';
+    echo $players[$d];
     echo '.png">';
     //TODO: finish this method
-    echo $playerNames[$d];
+    echo $players[$d];
     
 }
 // This method should display a score based on $score
@@ -158,13 +165,19 @@ function displayScore($score)
             {
                 $score = 42 - $score;
             }
+            
+            // THIS WILL NOT WORK, IT WILL JUST CHOOSE A RANDOM PLAYER
+            // IT WILL NOT DISPLAY ALL PLAYERS
+            // IT WILL OFTEN REPEAT PLAYERS
+            // INSTEAD WE WILL RANDOMIZE PLAYER NAMES ABOVE
             //randomizes the characters order
-          $d = RanPlayer();
+            // $d = RanPlayer();
+            
             // Save the score
-            $playerScores[$d] = $score;
+            $playerScores[$i] = $score;
             
             // display the player info for this player
-            displayPlayerInfo($d);
+            displayPlayerInfo($i);
             // followed by their hand
             displayHand($hand);
             // followed by their score
