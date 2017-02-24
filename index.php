@@ -83,8 +83,15 @@ function displayWinners()
 {
     global $playerScores;
     global $players;
+    $highScore = 0;
+    for($i = 0; $i < 4; $i++)
+    {
+        if($playerScores[$i] > $highScore && $playerScores[$i] < 43)
+        {
+            $highScore = $playerScores[$i];
+        }
+    }
     
-    $highScore = max($playerScores);
     //echo 'high score: ';
     //echo $highScore;
     $winnerCount = 0;
@@ -100,7 +107,7 @@ function displayWinners()
     if($winnerCount == 1)
     {
         echo $winners[0];
-        echo ' wins';
+        echo ' wins, with a score of: ';
     }
     else {
         for($i = 0; $i < $winnerCount; $i++)
@@ -109,7 +116,7 @@ function displayWinners()
             {
                 echo 'and ';
                 echo $winners[$i];
-                echo ' are tied for winner';
+                echo ' are tied for winner, with a score of: ';
             }
             else
             {
@@ -118,6 +125,10 @@ function displayWinners()
             }
         }
     }
+    
+    $totalScore = 0;
+    for($i = 0; $i < 4; $i++) $totalScore += $playerScores[$i];
+    echo $totalScore;
 }
 // This method should display the profile picture and info for a the player: $players[$i]
 function displayPlayerInfo($d)
@@ -158,13 +169,6 @@ function displayScore($score)
             $score = 0;
             foreach($hand as $c) $score += $deckValues[$c];
             
-            // If this score "busts" or is greater than 42, we give the player
-            // a negative score.
-            $points = $score;
-            if($score > 42)
-            {
-                $score = 42 - $score;
-            }
             
             // Save the score
             $playerScores[$i] = $score;
@@ -174,7 +178,7 @@ function displayScore($score)
             // followed by their hand
             displayHand($hand);
             // followed by their score
-            displayScore($points);
+            displayScore($score);
             echo '<hr>';
         }
         displayWinners();
