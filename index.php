@@ -4,13 +4,13 @@ $deckValues = array();
 $deckSuits = array();
 $suitArray = array("clubs", "diamonds", "hearts", "spades");
 $cardTypes = array('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J','Q','K');
-$playerNames = array("Matthew", "Ruth", "Ester", "Jude", "Bobby", "Billy", "Jimmy", "Jeff", "Danielle", "Carsen");
+$playerNames = array("Matthew", "Ruth", "Ester", "Jude");
 $players = array();
 
 // Randomize the player order
 for($i = 0; $i < 3; $i++)
 {
-    $r = rand(0, 9 - $i);
+    $r = rand(0, 3 - $i);
     $players[] = $playerNames[$r];
     array_splice($playerNames, $r, 1);
 }
@@ -135,7 +135,7 @@ function displayPlayerInfo($d)
 {
     global $players;
     //ADDED PLAYER PICS
-    echo '<img src = "img/';
+    echo '<img class="player" src = "img/players/';
     echo $players[$d];
     echo '.png">';
     //TODO: finish this method
@@ -154,6 +154,9 @@ function displayScore($score)
 <html>
     <head>
         <title> Silverjack Game </title>
+        <style>
+            @import url("css/style.css");
+        </style>
     </head>
     <body>
         <?php
