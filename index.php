@@ -46,7 +46,7 @@ function popRandCard()
 function displayCardImage($i){
     global $deckSuits;
     global $deckValues;
-    echo '<img class="card" src="IMG/cards/';
+    echo '<img class="card" src="img/cards/';
     echo $deckSuits[$i];
     echo '/';
     echo $deckValues[$i];
