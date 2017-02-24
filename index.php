@@ -84,18 +84,31 @@ function displayWinners()
     $winners = [];
     for($i = 0; $i < 4; $i++)
     {
-        if($playerScores == $highScore)
+        if($playerScores[$i] == $highScore)
         {
             $winners[] = $playerNames[$i];
             $winnerCount++;
         }
     }
-    if($winnerCount == 1) echo $winners[0] + ' wins';
+    if($winnerCount == 1)
+    {
+        echo $winners[0];
+        echo ' wins';
+    }
     else {
         for($i = 0; $i < $winnerCount; $i++)
         {
-            if($i == $winnerCount - 1) echo 'and ' +$winners[$i] + ' are tied for winner';
-            else echo $winners[$i] + ', ';
+            if($i == $winnerCount - 1)
+            {
+                echo 'and ';
+                echo $winners[$i];
+                echo ' are tied for winner';
+            }
+            else
+            {
+                echo $winners[$i];
+                echo ', ';
+            }
         }
     }
 }
@@ -135,7 +148,6 @@ function displayScore($score)
             // add the values of the cards in the hand to create a score
             $score = 0;
             foreach($hand as $c) $score += $deckValues[$c];
-            $playerScores[$i] = $score;
             
             // If this score "busts" or is greater than 42, we give the player
             // a negative score.
@@ -143,6 +155,9 @@ function displayScore($score)
             {
                 $score = 42 - $score;
             }
+            
+            // Save the score
+            $playerScores[$i] = $score;
             
             // display the player info for this player
             displayPlayerInfo($i);
