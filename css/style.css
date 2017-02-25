@@ -1,2 +1,23 @@
 body {
+    text-align: center;
+    background: radial-gradient(1000px at center, #09FF00, black);
+}
+table{
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 0 auto;
+}
+th, td {
+    padding: 15px;
+}
+th{
+    color: rgba(0,0,0,0.6);
+    text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+                 0px -5px 35px rgba(255,255,255,0.3);
+    font-size: 4em;
+    border: 1px solid black;
+    background: linear-gradient(white, gray);
+    border-radius: 20px;
+    box-shadow: 1px 1px black;
 }
