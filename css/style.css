@@ -11,7 +11,8 @@ table{
 th, td {
     padding: 15px;
 }
-th{
+h1{
+    padding: 15px;
     color: rgba(0,0,0,0.6);
     text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
                  0px -5px 35px rgba(255,255,255,0.3);
@@ -21,7 +22,13 @@ th{
     border-radius: 20px;
     box-shadow: 1px 1px black;
 }
-.player_figure {
+#winners {
+    font-size: 2em;
+}
+.player_figure{
+    font-size: 1.25em;
+}
+.player_figure, #winners {
     background-color: white;
     border-color: black;
     border-style: solid;

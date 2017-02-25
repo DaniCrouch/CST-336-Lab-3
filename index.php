@@ -159,17 +159,14 @@ function displayScore($score)
         </style>
     </head>
     <body>
+        <h1>SilverJack</h1>
         <table>
-            <tr> 
-                <th>SilverJack</th>
-            </tr>
             <tr>
-            <th1>Player</th1>
-            <th1>Hand</th1>
-            <th1>Score</th1>
+            <th>Player</th>
+            <th>Hand</th>
+            <th>Score</th>
             </tr>
             
-            <td>
         <?php
         // Now, for the four players, assign them each a hand and display it
         global $playerScores;
@@ -188,7 +185,7 @@ function displayScore($score)
             $playerScores[$i] = $score;
             
             // display the player info for this player
-            echo "<table>";
+            echo "<tr>";
             echo "<td>";
             displayPlayerInfo($i);
             echo "</td>";
@@ -199,14 +196,13 @@ function displayScore($score)
             // followed by their score
             echo "<td>";
             displayScore($score);
-            echo "</td>";
-            echo "</table>";
-            echo '<hr>';
+            echo "</td></tr>";
             
         }
-        displayWinners();
         ?>
-        </td>
         </table>
+        <div id="winners">
+            <?php displayWinners(); ?>
+        </div>
     </body>
 </html>
