@@ -135,11 +135,11 @@ function displayPlayerInfo($d)
 {
     global $players;
     //ADDED PLAYER PICS
-    echo '<img class="player" src = "img/players/';
+    echo '<figure class="player_figure"><img class="player" src = "img/players/';
     echo $players[$d];
-    echo '.png">';
-    //TODO: finish this method
+    echo '.png"><figcaption>';
     echo $players[$d];
+    echo '</figcaption></figure>';
     
 }
 // This method should display a score based on $score
